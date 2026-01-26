@@ -1,0 +1,19 @@
+.dashboard-container {
+  min-height: calc(100vh - 140px);
+  background-color: #f8fafc;
+  padding: 40px;
+}
+
+.dashboard-container h1 {
+  font-size: 28px;
+  color: #1e293b;
+  margin-bottom: 20px;
+}
+
+.dashboard-card {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 500px;
+}
