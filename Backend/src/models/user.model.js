@@ -19,6 +19,14 @@ const userSchema = new mongoose.Schema({
   },
   age:{
     type: Number
+  },
+  avatar:{
+    type:String,
+    default: ""
+  },
+  bio:{
+    type:String,
+    default: ""
   }
 },{timestamps: true});
 

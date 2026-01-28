@@ -1,18 +1,18 @@
 .navbar {
-  height: 70px;
-  background-color: #1e293b; 
+  height: 64px;
+  background-color: #0f172a;
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 40px;
+  padding: 0 60px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .navbar h2 {
-  font-size: 22px;
-  font-weight: bold;
-  color: #38bdf8; 
+  font-size: 20px;
+  font-weight: 600;
+  color: #38bdf8;
 }
 
 .navbar ul {
@@ -21,27 +21,60 @@
   gap: 30px;
 }
 
-.navbar ul li {
-  cursor: pointer;
-  font-size: 16px;
-  transition: color 0.3s;
+.navbar ul li a {
+  text-decoration: none;
+  color: #cbd5f5;
+  font-size: 15px;
 }
 
-.navbar ul li:hover {
+.navbar ul li a:hover {
   color: #38bdf8;
 }
 
-.navbar button {
-  padding: 8px 18px;
-  border: none;
-  border-radius: 5px;
-  background-color: #ef4444; 
-  color: #ffffff;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+/* ===== Profile Avatar (Navbar ONLY) ===== */
+.profile-wrapper {
+  position: relative;
 }
 
-.navbar button:hover {
-  background-color: #dc2626;
+.navbar-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #38bdf8;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ===== Dropdown ===== */
+.profile-dropdown {
+  position: absolute;
+  right: 0;
+  top: 52px;
+  width: 160px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  z-index: 100;
+}
+
+.profile-dropdown a,
+.profile-dropdown button {
+  width: 100%;
+  padding: 10px 14px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  color: #0f172a;
+}
+
+.profile-dropdown a:hover,
+.profile-dropdown button:hover {
+  background-color: #f1f5f9;
 }

@@ -6,6 +6,7 @@ import PublicRoute from "./routes/PublicRoute"
 import SendOtp from "./pages/SendOtp";
 import VerifyOtp from "./pages/VerifyOtp";
 import ResetPassword from "./pages/ResetPassword";
+import Profile from "./pages/Profile";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
       //protected route
       <Route element={<ProtectRoute />} >
          <Route path="/dashboard" element={<Dashboard />} />
+         <Route path="/profile" element={<Profile />} />     
       </Route>
       
     </Routes>

@@ -3,6 +3,7 @@ require("dotenv").config(); // FIRST LINE
 const express = require('express');
 const cors = require('cors');
 const authRouter = require('./src/routes/auth.router');
+const profileRouter = require('./src/routes/profile.router');
 
 const app = express();
 
@@ -22,5 +23,6 @@ app.get('/', (req, res) => {
 });
 
 app.use("/api", authRouter);
+app.use("/api", profileRouter);
 
 module.exports = app;
