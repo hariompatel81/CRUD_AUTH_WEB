@@ -1,10 +1,8 @@
-const users = require('../models/user.model');
+const users = require("../models/user.model");
 
 exports.getUserProfile = async (req, res) => {
-  try{
-      const user = await users
-      .findById(req.user.id)
-      .select("-password");
+  try {
+    const user = await users.findById(req.user.id).select("-password");
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
@@ -12,12 +10,14 @@ exports.getUserProfile = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      data: user
+      data: user,
     });
-  }catch(error){
+  } catch (error) {
     res.status(500).json({ message: "Server error" });
   }
-}
+};
+
+
 exports.updateUserProfile = async (req, res) => {
   try {
     const updates = {};
@@ -30,24 +30,20 @@ exports.updateUserProfile = async (req, res) => {
     if (Object.keys(updates).length === 0) {
       return res.status(400).json({
         success: false,
-        message: "No fields provided to update"
+        message: "No fields provided to update",
       });
     }
 
-    const updatedUser = await users.findByIdAndUpdate(
-      req.user.id,
-      { $set: updates },
-      { new: true }
-    ).select("-password");
+    const updatedUser = await users
+      .findByIdAndUpdate(req.user.id, { $set: updates }, { new: true })
+      .select("-password");
 
     res.status(200).json({
       success: true,
       message: "Profile updated successfully",
-      data: updatedUser
+      data: updatedUser,
     });
-
   } catch (error) {
     res.status(500).json({ message: "Server error" });
   }
 };
-

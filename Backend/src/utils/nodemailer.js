@@ -42,4 +42,65 @@ const sendForgotPasswordMail = async (userEmail, otp) => {
   }
 };
 
-module.exports = { sendForgotPasswordMail, transporter };
+const sendWelcomeOTP = async (userEmail, otp) => {
+  try {
+    await transporter.sendMail({
+      from: `"CRUD AUTH WEB" <${process.env.USER_EMAIL}>`,
+      to: userEmail,
+      subject: "Your OTP for Verification",
+      text: `Your OTP is ${otp}. It is valid for 5 minutes.`,
+      html: `
+        <div style="font-family: Arial, sans-serif; background:#f8fafc; padding:20px;">
+          <div style="max-width:500px; margin:auto; background:white; padding:25px; border-radius:10px; box-shadow:0 10px 25px rgba(0,0,0,0.1)">
+            
+            <h2 style="color:#0f172a; text-align:center;">
+              Welcome to CRUD_AUTH_WEB
+            </h2>
+
+            <p style="color:#334155; font-size:15px;">
+              Hi there,<br/><br/>
+              Use the following OTP to verify your email address:
+            </p>
+
+            <div style="text-align:center; margin:20px 0;">
+              <span style="
+                display:inline-block;
+                background:#38bdf8;
+                color:#0f172a;
+                font-size:22px;
+                font-weight:bold;
+                padding:12px 25px;
+                border-radius:8px;
+                letter-spacing:2px;">
+                ${otp}
+              </span>
+            </div>
+
+            <p style="color:#475569; font-size:14px;">
+              ⏰ This OTP is valid for <b>5 minutes</b> only.
+            </p>
+
+            <p style="color:#64748b; font-size:13px;">
+              If you did not request this, please ignore this email.
+            </p>
+
+            <hr style="margin:20px 0"/>
+
+            <p style="text-align:center; font-size:12px; color:#94a3b8;">
+              © ${new Date().getFullYear()} CRUD_AUTH_WEB
+            </p>
+          </div>
+        </div>
+      `
+    });
+
+    console.log("OTP Email sent successfully");
+
+  } catch (error) {
+    console.error("Error sending OTP email:", error);
+    throw error;
+  }
+};
+
+
+module.exports = { sendForgotPasswordMail, sendWelcomeOTP, transporter };

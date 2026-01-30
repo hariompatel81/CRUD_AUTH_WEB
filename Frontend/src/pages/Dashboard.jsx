@@ -19,7 +19,7 @@ const Dashboard = () => {
         },
       })
       .then((res) => {
-        setUserName(res.data.data.name);   // 👈 yahi main part hai
+        setUserName(res.data.data.name);   //  yahi main part hai
       })
       .catch((err) => console.log(err));
   }, []);
