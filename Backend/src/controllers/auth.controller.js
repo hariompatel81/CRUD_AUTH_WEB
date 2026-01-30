@@ -39,7 +39,7 @@ exports.Signup = async (req, res) => {
     const otp = generateOtp();
 
     //send otp for verification
-    sendWelcomeOTP(email, otp);
+    await sendWelcomeOTP(email, otp);
 
     //encrypt password
     const hashPassword = await encryptPassword(password);
@@ -53,6 +53,12 @@ exports.Signup = async (req, res) => {
 
     //create user
     const user = await users.create(newUser);
+
+    //remove otp from otp model
+    await otpModel.deleteMany({ userId: user._id });
+  
+    //add new otp
+    await otpModel.create({ userId: user._id, otp });
 
     const userWithoutPass = user.toObject();
     delete userWithoutPass.password;
