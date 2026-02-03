@@ -7,7 +7,7 @@ import SendOtp from "./pages/SendOtp";
 import VerifyOtp from "./pages/VerifyOtp";
 import ResetPassword from "./pages/ResetPassword";
 import Profile from "./pages/Profile";
-import VerifySignupOTP from "./pages/VerifySignupOtp";
+import VerifySignupOtp from "./pages/VerifySignupOtp";
 
 const App = () => {
   return (
@@ -15,7 +15,7 @@ const App = () => {
       {/* 1. Public Routes */}
       <Route element={<PublicRoute />}>
         <Route path="/" element={<AuthForm />} />
-        <Route path="/verify-signup-otp" element={<VerifySignupOTP />} />
+        <Route path="/verify-signup-otp" element={<VerifySignupOtp />} />
         <Route path="/send-otp" element={<SendOtp />} />
         <Route path="/verify-otp" element={<VerifyOtp />} />
         <Route path="/reset-password" element={<ResetPassword />} />

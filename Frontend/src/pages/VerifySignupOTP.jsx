@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import api from "../api/axios";
-import "./VerifySignupOTP.css";
+import "./VerifySignupOtp.css";
 
-export default function VerifySignupOTP() {
+export default function VerifySignupOtp() {
   const [otp, setOtp] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
