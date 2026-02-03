@@ -1,6 +1,7 @@
 const { validationResult } = require("express-validator");
 const users = require("./../models/user.model");
 const otpModel = require("../models/otp.model");
+const jwt = require('jsonwebtoken');
 const {
   encryptPassword,
   comparePassword,
@@ -66,6 +67,7 @@ exports.Signup = async (req, res) => {
     return res.status(201).json({
       success: true,
       message: "User registered successfully",
+      email:email,
       user: userWithoutPass,
     });
   } catch (err) {
@@ -98,6 +100,14 @@ exports.Login = async (req, res) => {
         success: false,
         message: "Invalid email or password",
         statusCode: 401,
+      });
+    }
+
+    if (!user.isVerified) {
+      return res.status(403).json({
+        success: false,
+        message: "Please verify your email before logging in.",
+        isVerified: false // Frontend ko batane ke liye ki OTP page dikhao
       });
     }
 
@@ -141,7 +151,7 @@ exports.sendOtp = async (req, res) => {
     const user = await users.findOne({ email });
 
     if (!user) {
-      res.status(404).json({
+      return res.status(404).json({
         success: false,
         message: "user not found",
       });
@@ -170,7 +180,7 @@ exports.sendOtp = async (req, res) => {
   }
 };
 
-exports.verifyOtp = async (req, res) => {
+exports.verifyForgetPasswordOtp = async (req, res) => {
   try {
     const { email, otp } = req.body;
 
@@ -196,6 +206,48 @@ exports.verifyOtp = async (req, res) => {
       return res.status(400).json({ message: "Invalid or Expired OTP" });
     }
 
+    const resetToken = generateToken({ userId: user._id });
+
+    await otpModel.deleteMany({ userId: user._id });
+
+    return res.status(200).json({
+      success: true,
+      message: "OTP verified",
+      resetToken:resetToken
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+exports.verifySingupOtp = async (req, res) => {
+  try {
+    const { email, otp } = req.body;
+
+    if (!email || !otp) {
+      return res.status(400).json({
+        success: false,
+        message: "Email and OTP required",
+      });
+    }
+
+    const user = await users.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const otpData = await otpModel.findOne({
+      userId: user._id,
+      otp,
+    });
+
+    if (!otpData) {
+      return res.status(400).json({ message: "Invalid or Expired OTP" });
+    }
+
+    user.isVerified = true;
+    await user.save();
     await otpModel.deleteMany({ userId: user._id });
 
     return res.status(200).json({
@@ -209,9 +261,21 @@ exports.verifyOtp = async (req, res) => {
 
 exports.resetPassword = async (req, res) => {
   try {
-    const { email, newPassword } = req.body;
+    const { token, newPassword } = req.body;
 
-    const user = await users.findOne({ email });
+    if (!token) return res.status(400).json({ message: "Reset token is required" });
+
+    // Helper function ya JWT se userId nikaalein
+    // Maan lijiye aapka generateToken JWT use karta hai
+    // Token verify
+    let decoded;
+    try {
+      decoded = jwt.verify(token, process.env.SECRET_KEY);
+    } catch (err) {
+      return res.status(401).json({ success: false, message: "Invalid or expired reset token" });
+    }
+
+    const user = await users.findById(decoded.userId);
 
     if (!user) {
       return res.status(404).json({

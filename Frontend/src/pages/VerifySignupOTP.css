@@ -1,0 +1,172 @@
+/* /* Container styling to match AuthForm
+.verify-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f7f6;
+  font-family: 'Poppins', sans-serif;
+}
+
+.verify-container {
+  background: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.verify-container h2 {
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 24px;
+}
+
+.verify-container p {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.verify-container b {
+  color: #007bff; 
+} 
+
+
+ .verify-container input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 18px;
+  letter-spacing: 5px; 
+  text-align: center;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.verify-container input:focus {
+  border-color: #007bff;
+}
+
+
+.verify-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.verify-container button:hover {
+  background-color: #0056b3;
+}
+
+
+.resend-text {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #888;
+}
+
+.resend-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.resend-link:hover {
+  text-decoration: underline;
+} 
+*/
+
+/* VerifyOTP.css */
+
+.verify-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #1a73e8;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.verify-container {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.verify-container h2 {
+  color: #202124;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.verify-container p {
+  color: #5f6368;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.verify-container b {
+  color: #0b3d66;
+}
+
+.verify-container input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 20px;
+  letter-spacing: 8px; /* OTP digits ke liye gap */
+  text-align: center;
+  outline: none;
+}
+
+.verify-container input:focus {
+  border-color: #0b3d66;
+}
+
+.verify-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #0b3d66;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.verify-container button:hover {
+  background-color: #082d4d;
+}
+
+.resend-text {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #5f6368;
+}
+
+.resend-link {
+  color: #0b3d66;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}

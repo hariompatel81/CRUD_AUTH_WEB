@@ -25,13 +25,17 @@ function VerifyOtp() {
     }
 
     try {
-      const res = await api.post("/auth/verify-otp", {
-        email,
-        otp
-      });
-
+      // ... try block inside handleVerifyOtp
+      const res = await api.post("/auth/verify-otp", { email, otp });
       alert(res.data.message || "OTP verified");
-      navigate("/reset-password", { state: { email } });
+
+      // Reset token ko state mein pass karein
+      navigate("/reset-password", {
+        state: {
+          email: email,
+          token: res.data.resetToken // Backend se token lekar bhejrein
+        }
+      });
 
     } catch (error) {
       alert(

@@ -32,9 +32,13 @@ function ResetPassword() {
     }
 
     try {
+      // ... location se token nikaalein
+      const token = location.state?.token;
+
+      // ResetPassword.jsx ke andar handleResetPassword function
       const res = await api.post("/auth/reset-password", {
-        email,
-        newPassword
+        token: location.state?.token, // VerifyOtp se aaya hua token
+        newPassword: newPassword
       });
 
       alert(res.data.message || "Password reset successful");

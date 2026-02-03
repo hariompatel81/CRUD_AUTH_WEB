@@ -11,47 +11,42 @@ export default function AuthForm() {
 
   const navigate = useNavigate();
 
+const handleLogin = async () => {
+  try {
+    const response = await api.post("/auth/login", { email, password });
+    const data = response.data;
 
-
-  const handleLogin = async () => {
-    try {
-      const response = await api.post("/auth/login", {
-        email,
-        password
-      });
-
-      const data = response.data;
-
-      if (data.success) {
-        localStorage.setItem("token", data.token);
-        alert(data.message);
-        // window.location.href = "/dashboard";
-        navigate('/dashboard');
-      }
-
-    } catch (error) {
-      alert(error.response?.data?.message || "Login failed");
+    if (data.success) {
+      localStorage.setItem("token", data.token);
+      alert("Login successful");
+      navigate('/dashboard');
     }
-  };
-
-  const handleSignup = async () => {
-    try {
-      const response = await api.post("/auth/signup", {
-        name,
-        email,
-        password,
-        age
-      });
-
-      if (response.data.success) {
-        alert("Signup successful");
-        setIsLogin(true);
-      }
-
-    } catch (error) {
-      alert(error.response?.data?.message || "Signup failed");
+  } catch (error) {
+    const errorMessage = error.response?.data?.message;
+    
+    // Agar backend se "not verified" ka error aaye (Status 403)
+    if (error.response?.status === 403) {
+      alert(errorMessage);
+      navigate('/verify-signup-otp', { state: { email: email } });
+    } else {
+      alert(errorMessage || "Login failed");
     }
-  };
+  }
+};
+
+const handleSignup = async () => {
+  try {
+    const response = await api.post("/auth/signup", { name, email, password, age });
+
+    if (response.data.success) {
+      alert("Registration successful! Please verify the OTP sent to your email.");
+      // Email pass karein taaki verify page par iska use ho sake
+      navigate('/verify-signup-otp', { state: { email: email } });
+    }
+  } catch (error) {
+    alert(error.response?.data?.message || "Signup failed");
+  }
+};
 
   return (
     <div className='auth-page'>
