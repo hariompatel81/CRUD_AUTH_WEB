@@ -1,103 +1,11 @@
-/* /* Container styling to match AuthForm
+/* Container styling matching your blue background screenshot */
 .verify-page {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f4f7f6;
-  font-family: 'Poppins', sans-serif;
-}
-
-.verify-container {
-  background: #fff;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
-}
-
-.verify-container h2 {
-  margin-bottom: 10px;
-  color: #333;
-  font-size: 24px;
-}
-
-.verify-container p {
-  color: #666;
-  font-size: 14px;
-  margin-bottom: 30px;
-}
-
-.verify-container b {
-  color: #007bff; 
-} 
-
-
- .verify-container input {
-  width: 100%;
-  padding: 12px 15px;
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 18px;
-  letter-spacing: 5px; 
-  text-align: center;
-  outline: none;
-  transition: border-color 0.3s;
-}
-
-.verify-container input:focus {
-  border-color: #007bff;
-}
-
-
-.verify-container button {
-  width: 100%;
-  padding: 12px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.verify-container button:hover {
-  background-color: #0056b3;
-}
-
-
-.resend-text {
-  margin-top: 20px;
-  font-size: 13px;
-  color: #888;
-}
-
-.resend-link {
-  color: #007bff;
-  text-decoration: none;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.resend-link:hover {
-  text-decoration: underline;
-} 
-*/
-
-/* VerifyOTP.css */
-
-.verify-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #1a73e8;
-  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background-color: #1a73e8; /* Blue background from your screenshot */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .verify-container {
@@ -123,7 +31,7 @@
 }
 
 .verify-container b {
-  color: #0b3d66;
+  color: #0b3d66; /* Deep blue text for email */
 }
 
 .verify-container input {
@@ -133,9 +41,10 @@
   border: 2px solid #e0e0e0;
   border-radius: 8px;
   font-size: 20px;
-  letter-spacing: 8px; /* OTP digits ke liye gap */
+  letter-spacing: 8px; /* OTP digits spacing */
   text-align: center;
   outline: none;
+  box-sizing: border-box;
 }
 
 .verify-container input:focus {
@@ -145,13 +54,14 @@
 .verify-container button {
   width: 100%;
   padding: 12px;
-  background-color: #0b3d66;
+  background-color: #0b3d66; /* Matching deep blue button */
   color: #ffffff;
   border: none;
   border-radius: 6px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .verify-container button:hover {
@@ -169,4 +79,13 @@
   font-weight: bold;
   cursor: pointer;
   text-decoration: none;
+}
+
+.resend-link:hover {
+  text-decoration: underline;
+}
+
+.resend-link.disabled {
+  color: #999;
+  cursor: not-allowed;
 }

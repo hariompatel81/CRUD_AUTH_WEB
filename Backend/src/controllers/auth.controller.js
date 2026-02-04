@@ -298,3 +298,42 @@ exports.resetPassword = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
+
+exports.resendOtp = async (req, res) => {
+  try {
+    const { email, type } = req.body;
+
+    
+    const user = await users.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found" });
+    }
+
+    const otp = generateOtp();
+    
+    await otpModel.deleteMany({ userId: user._id });
+    await otpModel.create({ userId: user._id, otp: otp });
+
+    try {
+      if (type === "singupOTP") {
+        await sendWelcomeOTP(email, otp);
+      } else {
+        await sendForgotPasswordMail(email, otp);
+      }
+    } catch (mailError) {
+      console.error("Mail Service Down:", mailError);
+      return res.status(503).json({ success: false, message: "Email service currently unavailable" });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "OTP resent successfully",
+    });
+
+  } catch (error) {
+    console.error("Critical Resend Error:", error);
+    return res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+};
+
