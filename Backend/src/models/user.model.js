@@ -17,6 +17,31 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 6
   },
+  gender:{
+    type:String,
+    enum:['Male','Female','Other','Prefer not to say'],
+    default:'Prefer not to say',
+  },
+  location:{
+    city:{
+      type:String,
+      trim:true,
+      default:"",
+    },
+    country:{
+      type:String,
+      trim:true,
+      default:"",
+    }
+  },
+  socialLinks:{
+    linkedin:{type:String, default:""},
+    github:{type:String, default:""},
+  },
+  skills: [{
+    type:String,
+    trim:true,
+  }],
   age:{
     type: Number
   },
@@ -26,7 +51,8 @@ const userSchema = new mongoose.Schema({
   },
   bio:{
     type:String,
-    default: ""
+    default: "",
+    maxlength: 250,
   },
   isVerified:{
     type:Boolean,

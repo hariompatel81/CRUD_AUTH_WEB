@@ -1,91 +1,98 @@
-/* Container styling matching your blue background screenshot */
+/* Pura background white/light grey karne ke liye */
 .verify-page {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #1a73e8; /* Blue background from your screenshot */
+  background-color: #f4f7f9; /* Light greyish white background */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
 }
 
+/* Card styling */
 .verify-container {
   background: #ffffff;
   padding: 40px;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); /* Soft shadow */
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
   text-align: center;
+  border: 1px solid #eaeaea; /* Light border for definition */
 }
 
 .verify-container h2 {
-  color: #202124;
-  margin-bottom: 10px;
-  font-size: 24px;
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 26px;
+  font-weight: 600;
 }
 
 .verify-container p {
-  color: #5f6368;
+  color: #666;
   font-size: 14px;
   margin-bottom: 25px;
 }
 
 .verify-container b {
-  color: #0b3d66; /* Deep blue text for email */
+  color: #1a73e8; /* Blue email highlight */
 }
 
+/* OTP Input Styling */
 .verify-container input {
   width: 100%;
   padding: 15px;
   margin-bottom: 20px;
-  border: 2px solid #e0e0e0;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  font-size: 20px;
-  letter-spacing: 8px; /* OTP digits spacing */
+  font-size: 22px;
+  letter-spacing: 10px; /* OTP digits spacing */
   text-align: center;
   outline: none;
   box-sizing: border-box;
+  background-color: #fafafa;
+  transition: all 0.3s ease;
 }
 
 .verify-container input:focus {
-  border-color: #0b3d66;
+  border-color: #1a73e8;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
 }
 
+/* Button Styling (Matching your screenshot) */
 .verify-container button {
   width: 100%;
-  padding: 12px;
-  background-color: #0b3d66; /* Matching deep blue button */
+  padding: 14px;
+  background-color: #0b3d66; /* Deep blue button */
   color: #ffffff;
   border: none;
   border-radius: 6px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background 0.3s ease;
 }
 
 .verify-container button:hover {
   background-color: #082d4d;
 }
 
+/* Footer Links */
 .resend-text {
   margin-top: 20px;
-  font-size: 13px;
-  color: #5f6368;
+  font-size: 14px;
+  color: #777;
 }
 
 .resend-link {
-  color: #0b3d66;
+  color: #1a73e8;
   font-weight: bold;
   cursor: pointer;
   text-decoration: none;
+  margin-left: 5px;
 }
 
 .resend-link:hover {
   text-decoration: underline;
-}
-
-.resend-link.disabled {
-  color: #999;
-  cursor: not-allowed;
 }

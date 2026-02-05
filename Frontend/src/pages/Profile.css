@@ -1,60 +1,171 @@
+/* Container styling */
 .profile-container {
-  min-height: calc(100vh - 64px);
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+/* --- Profile Picture (Avatar) Section --- */
+.avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #f8fbff;
+  border-radius: 10px;
+  border: 1px dashed #4a90e2;
+}
+
+.avatar-preview-container {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 15px;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  background: #eee;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f1f5f9;
 }
 
-.profile-card {
-  width: 380px;
-  background-color: #ffffff;
-  padding: 32px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-}
-
-/* Profile page avatar (BIG, not navbar) */
-.profile-avatar {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  border: 4px solid #38bdf8;
-  margin-bottom: 15px;
-}
-
-.profile-card h2 {
-  margin-bottom: 5px;
-  color: #0f172a;
-}
-
-.profile-card p {
-  font-size: 14px;
-  color: #64748b;
-}
-
-.profile-card textarea {
+.avatar-preview {
   width: 100%;
-  height: 80px;
-  margin-top: 15px;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #cbd5e1;
-  resize: none;
+  height: 100%;
+  object-fit: cover;
 }
 
-.profile-card button {
-  width: 100%;
-  margin-top: 15px;
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  background-color: #38bdf8;
-  font-weight: 600;
+.avatar-placeholder {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #4a90e2;
+  text-transform: uppercase;
+}
+
+.file-input {
+  width: auto !important;
+  font-size: 0.85rem !important;
+  border: none !important;
+  background: transparent !important;
   cursor: pointer;
 }
 
-.profile-card button:hover {
-  background-color: #0ea5e9;
+/* --- Status Messages --- */
+.status-msg {
+  text-align: center;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  background-color: #f0fdf4; /* Success Green */
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+  transition: all 0.3s ease;
+}
+
+.status-msg.error {
+  background-color: #fef2f2; /* Error Red */
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+/* --- Form Sections --- */
+.profile-form section {
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #4a90e2;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #eef2f7;
+  padding-bottom: 8px;
+}
+
+/* --- Inputs & Grid --- */
+.profile-form input,
+.profile-form select,
+.profile-form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box; 
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-form input:focus,
+.profile-form select:focus,
+.profile-form textarea:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.grid-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 600px) {
+  .grid-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+}
+
+/* --- Buttons --- */
+.save-btn {
+  width: 100%;
+  padding: 18px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  margin-top: 10px;
+}
+
+.save-btn:hover {
+  background-color: #357abd;
+}
+
+.save-btn:active {
+  transform: scale(0.98);
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 100px;
+  color: #666;
 }

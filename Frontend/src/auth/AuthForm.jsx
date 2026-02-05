@@ -68,7 +68,7 @@ const handleSignup = async () => {
                 <button onClick={handleLogin}>Login</button>
 
                 <p>
-                  Not a number?
+                  Not a member?
                   <a href="#" onClick={() => setIsLogin(false)}>Signup Now</a>
                 </p>
               </div>

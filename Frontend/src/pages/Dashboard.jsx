@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import axios from "axios";
+import api from "../api/axios";
 import "./Dashboard.css";
 
 const Dashboard = () => {
@@ -12,14 +12,13 @@ const Dashboard = () => {
 
     if (!token) return;
 
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/profile/me`, {
+    api.get(`/profile/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then((res) => {
-        setUserName(res.data.data.name);   //  yahi main part hai
+        setUserName(res.data.data.name);   
       })
       .catch((err) => console.log(err));
   }, []);
@@ -35,16 +34,8 @@ const Dashboard = () => {
 
         <p className="dashboard-subtitle">
           Manage your account and explore features
-        </p>
-
-        <div className="dashboard-cards">
-          <div className="dashboard-card">
-            <h3>Profile</h3>
-            <p>View and update your profile details</p>
-            <button>Go to Profile</button>
-          </div>
+        </p>        
         
-        </div>
       </div>
 
       <Footer />

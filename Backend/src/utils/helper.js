@@ -16,9 +16,10 @@ exports.generateToken = (payload)=> {
   return jwt.sign(payload, process.env.SECRET_KEY,{ expiresIn: "1d"});
 }
 
-//generate otp
+// Generate 6-digit unique OTP
 exports.generateOtp = () => {
-  const otp = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+  // Math.random() * 900000 + 100000 se hamesha 100000 aur 999999 ke beech number aayega
+  const otp = Math.floor(100000 + Math.random() * 900000).toString();
   return otp;
 }
 
